@@ -1,12 +1,15 @@
  require('dotenv').config()
 const express = require("express");
 const ConnectToDb = require("./config/db");
+const authRouter = require("../task-management-api/routes/auth")
+
 
 ConnectToDb();
 
 const app = express();
 const PORT = 5000;
 app.use(express.json());
+app.use('/api/auth', authRouter)
 
 app.get("/api/health",(req,res)=>{
     res.send("check karo")
