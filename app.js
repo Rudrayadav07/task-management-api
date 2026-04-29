@@ -9,6 +9,7 @@ const PORT = 5000;
 app.use(express.json());
 
 app.get("/api/health",(req,res)=>{
+    res.send("check karo")
         res.json({
             Status:"ok",
             uptime:process.uptime()
