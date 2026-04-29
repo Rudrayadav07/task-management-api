@@ -1,7 +1,7 @@
  require('dotenv').config()
 const express = require("express");
 const ConnectToDb = require("./config/db");
-const authRouter = require("../task-management-api/routes/auth")
+const authRouter = require("./routes/auth")
 
 
 ConnectToDb();
