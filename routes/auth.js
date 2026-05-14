@@ -2,7 +2,7 @@ const express= require("express")
 const router = express.Router()
 const { register,login } = require('../controllers/authController')        // controller kahan hai?
 const { body, validationResult } = require('express-validator')  
-
+const {protect} = require("../middleware/auth")
 const validationHandler = (req,res,next)=>{
     const error = validationResult(req)
     if(!error.isEmpty()){
@@ -24,6 +24,9 @@ router.post('/login', [
   body('password').notEmpty()
 ], validationHandler, login)
 
+router.get('/me', protect, (req, res) => {
+  res.status(200).json(req.user)
+})
 
 module.exports = router
 
